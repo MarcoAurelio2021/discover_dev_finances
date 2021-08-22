@@ -10,9 +10,25 @@
   box-sizing: border-box;
 }
 
+html {
+  font-size: 93.75%; /* 15px // 100% da página tem 16px, para achar o valor de pixel usa a regrinha de 3*/
+}
+
 body {
   background: #f0f2f5;
   font-family: 'poppins', sans-serif;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
 }
 
 .container {
@@ -30,15 +46,32 @@ h2 {
   font-weight: normal;
 }
 
+/* ====== Links $ Buttons ========= */
+
+a {
+  color: #49aa26;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #3dd705;
+}
+
+.button.new {
+  display: inline-block;
+  margin-bottom: 0.8rem;
+}
+
 /* ====== Header ========= */
 header {
   background-color: #2d4a2d;
   padding: 2rem 0 10rem;
+
+  text-align: center;
 }
 
 #logo {
   color: #fff;
-  text-align: center;
   font-weight: 100;
 }
 
@@ -66,6 +99,10 @@ header {
 .card h3 {
   font-weight: normal;
   font-size: 1rem;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .card p {
@@ -82,9 +119,12 @@ header {
 
 /* ====== Table ========= */
 #data-table {
+  display: block;
   width: 100%;
   border-spacing: 0 0.5rem;
   color: #969cb3;
+
+  overflow-x: auto;
 }
 
 table thead tr th:first-child,
@@ -92,11 +132,17 @@ table tbody tr td:first-child {
   border-radius: 0.25rem 0 0 0.25rem;
 }
 
+table thead tr th:last-child,
+table tbody tr td:last-child {
+  border-radius: 0 0.25rem 0.25rem 0;
+}
+
 table thead th {
   background: white;
 
   font-weight: normal;
   padding: 1rem 2rem;
+
   text-align: left;
 }
 
@@ -132,4 +178,18 @@ footer {
   color: var(--dark-blue);
 
   opacity: 0.6;
+}
+
+/* ====== Responsive ========= */
+
+@media (min-width: 800px) {
+  html {
+    font-size: 87.5%;
+  }
+
+  #balance {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+  }
 }
