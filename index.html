@@ -47,7 +47,9 @@
       <section id="transaction">
         <h2 class="sr-only">Transações</h2>
 
-        <a href="#" class="button new">+ Nova Transação</a>
+        <a href="#" 
+        onclick="Modal.open()"
+        class="button new">+ Nova Transação</a>
 
         <table id="data-table">
           <thead>
@@ -100,7 +102,7 @@
       </section>
     </main>
 
-    <div class="modal-overlay active">
+    <div class="modal-overlay"> <!-- ao remover a classe ( active meu modal irá fechar)-->
       <div class="modal">
           <div id="form">
             <h2>Nova Transação</h2>
@@ -115,7 +117,7 @@
 
               </div>
 
-              <div class="amount">
+              <div class="input-group">
                 <label 
                 class="sr-only" 
                 for="amount">Valor</label>
@@ -125,13 +127,48 @@
                 name="amount"
                 placeholder="0,00">
 
-              </div>
+                <small class="help">Use o sinal - (negativo) para despesas e , (vírgula) para casas decimais</small>
+               </div>
 
+                <div class="input-group">
+                  <label class="sr-only" 
+                  for="date">Data</label>
+                  <input type="date" 
+                  id="date"
+                  name="date"
+
+                  >
+                </div>
+
+                <div class="input-group actions">
+                  <a href="#" 
+                  onclick="Modal.close()"
+                  class="button cancel">Cancelar</a>
+                  <button>Salvar</button>
+                </div>
+              
             </form>
           </div>
      </div>
     </div>
 
+    <script>
+      const Modal = {
+        open () {
+                document.querySelector('.modal-overlay')
+                .classList
+                .add('active')
+
+              
+        },
+
+        close(){
+          document.querySelector('.modal-overlay')
+          .classList
+          .remove('active')
+        }
+      }
+    </script>
 
     <footer class="container">
       <p>dev.finance$</p>
