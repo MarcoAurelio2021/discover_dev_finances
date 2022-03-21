@@ -51,12 +51,17 @@ const transaction = {
 
 const DOM = {
 
+
   addTransaction (transaction, index) {
     const tr = document.createElement('tr')
-    tr.innerHTML = DOM.innerHTMLTransaction()
+    tr.innerHTML = DOM.innerHTMLTransaction(transaction)
+
+    console.log(tr.innerHTML);
   },
 
  innerHTMLTransaction (transaction){
+
+ 
    // é uma funcionalidade que vai fazer a criação do meu html.
    // para cada entrada, essa é a função que vai ser executada em algum momento.
   const html = `
@@ -65,7 +70,7 @@ const DOM = {
 
     <td class="expense">${transaction.amount}</td>
 
-    <td class="date">${transaction.amount}</td>
+    <td class="date">${transaction.date}</td>
 
     <td>
       <img src="./assets/minus.svg" alt="Remover transação" />
