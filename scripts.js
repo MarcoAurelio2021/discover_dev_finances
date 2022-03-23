@@ -46,13 +46,40 @@ const transactions = [
 
 const transaction = {
   incomes () {
-    // somar as entradas
+    let income = 0;
+    // pegar todas as transações
+    // para cada(forEach) transação
+    transactions.forEach(transaction => {
+      // se(If) ela for maior que zero
+    if (transaction.amount > 0) {
+      // somar a uma variável e retorna uma variável
+    income += transaction.amount;
+    }
+    })
+   
+    return income;
   },
-  expenses () {
-    // somar as saídas
+
+  expenses() {
+    let expense= 0;
+    // pegar todas as transações
+    // para cada(forEach) transação
+    transactions.forEach(transaction => {
+      // se(If) ela for menor que zero
+    if (transaction.amount < 0) {
+      // somar a uma variável e retorna uma variável
+     expense += transaction.amount;
+
+    }
+  })
+
+  return expense
+
   },
+
   total () {
-    // vai pegar as entradas e subtrair com a saídas e me retorna um valor final.
+    // obs: o sinal de mais está juntando com o sinal negativo do expenses, que está fazendo assim a subtração.
+   return transaction.incomes() + transaction.expenses();
   }
 }
 
@@ -92,7 +119,25 @@ const DOM = {
               
   `
   return html
+},
+
+updateBalance (){
+  // alteração no parte de balanço, selecionando o elemento pelo id, e inserindo o valores atraves do innerHTMl.
+  document
+  .getElementById('incomeDisplay')
+  .innerHTML = Utils.formatCurrent(transaction.incomes())
+
+  document
+  .getElementById('expenseDisplay')
+  .innerHTML = Utils.formatCurrent(transaction.expenses())
+
+
+  document
+  .getElementById('totalDisplay')
+  .innerHTML = Utils.formatCurrent(transaction.total())
+  
 }
+
 }
 
 const Utils = {
@@ -114,5 +159,5 @@ transactions.forEach(function(transaction) {
   DOM.addTransaction(transaction)
 })
 
-
+DOM.updateBalance()
 
