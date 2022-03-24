@@ -44,12 +44,18 @@ const transactions = [
     }
 ]
 
-const transaction = {
+const Transaction = {
+  all: transactions,
+  add(transaction) {
+
+    Transaction.all.push(transaction)
+
+  },
   incomes () {
     let income = 0;
     // pegar todas as transações
     // para cada(forEach) transação
-    transactions.forEach(transaction => {
+    Transaction.all.forEach(transaction => {
       // se(If) ela for maior que zero
     if (transaction.amount > 0) {
       // somar a uma variável e retorna uma variável
@@ -64,7 +70,7 @@ const transaction = {
     let expense= 0;
     // pegar todas as transações
     // para cada(forEach) transação
-    transactions.forEach(transaction => {
+    Transaction.all.forEach(transaction => {
       // se(If) ela for menor que zero
     if (transaction.amount < 0) {
       // somar a uma variável e retorna uma variável
@@ -125,16 +131,16 @@ updateBalance (){
   // alteração no parte de balanço, selecionando o elemento pelo id, e inserindo o valores atraves do innerHTMl.
   document
   .getElementById('incomeDisplay')
-  .innerHTML = Utils.formatCurrent(transaction.incomes())
+  .innerHTML = Utils.formatCurrent(Transaction.incomes())
 
   document
   .getElementById('expenseDisplay')
-  .innerHTML = Utils.formatCurrent(transaction.expenses())
+  .innerHTML = Utils.formatCurrent(Transaction.expenses())
 
 
   document
   .getElementById('totalDisplay')
-  .innerHTML = Utils.formatCurrent(transaction.total())
+  .innerHTML = Utils.formatCurrent(Transaction.total())
   
 }
 
