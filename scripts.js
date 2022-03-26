@@ -46,9 +46,11 @@ const transactions = [
 
 const Transaction = {
   all: transactions,
+
   add(transaction) {
 
     Transaction.all.push(transaction)
+    console.log(Transaction.all);
 
   },
   incomes () {
@@ -85,7 +87,7 @@ const Transaction = {
 
   total () {
     // obs: o sinal de mais está juntando com o sinal negativo do expenses, que está fazendo assim a subtração.
-   return transaction.incomes() + transaction.expenses();
+   return Transaction.incomes() + Transaction.expenses();
   }
 }
 
@@ -167,3 +169,10 @@ transactions.forEach(function(transaction) {
 
 DOM.updateBalance()
 
+
+Transaction.add({
+  id:39,
+  description: 'alo',
+  amount: 200,
+  date: '25/03/2022'
+})
