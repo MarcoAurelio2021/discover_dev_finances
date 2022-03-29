@@ -173,6 +173,24 @@ const Utils = {
 }
 
 const Form = {
+description: document.querySelector('input#description'),
+amount: document.querySelector('input#amount'),
+date: document.querySelector('input#date'),
+
+getValues() {
+
+}, 
+
+FormData(){},
+
+validateFields(){},
+
+
+ submit(event){
+   event.preventDefault()
+
+   Form.validateFields()
+ },
 
 }
 
