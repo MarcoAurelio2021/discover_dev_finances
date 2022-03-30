@@ -19,7 +19,7 @@ const Modal = {
 const Transaction = {
   all: [
     {
-      
+
     description: 'Luz', 
     amount: -50001,
     date: '30/07/2021',
@@ -178,18 +178,45 @@ amount: document.querySelector('input#amount'),
 date: document.querySelector('input#date'),
 
 getValues() {
-
+return {
+  description: Form.description.value,
+  amount: Form.amount.value,
+  date: Form.date.value
+}
 }, 
 
-FormData(){},
+// verificar se os campos foram validados.
+  validateFields(){
+  const {description, amount, date} = Form.getValues()
 
-validateFields(){},
+    if (description.trim() === "" || 
+        amount.trim() === "" || 
+        date.trim() === "") {
+        throw new Error("Por favor, preencha todos os campos")
+    }
+},
 
+formatValues() {
+
+
+  
+},
 
  submit(event){
    event.preventDefault()
 
-   Form.validateFields()
+try {
+  Form.validateFields()
+  // formatar os dados para salvar
+   Form.formatValues()
+  // Salvar
+  // Apagar os dados do formulário
+  // modal feche
+  // Atualizar a aplicação
+} catch (error) {
+  alert(error.message)
+}
+   
  },
 
 }
