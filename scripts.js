@@ -158,6 +158,17 @@ DOM.transactionsContainer.innerHTML = ""
 }
 
 const Utils = {
+formatAmount(value) {
+  value = Number(value) * 100
+},
+
+formatDate(date){
+  // split se aplica a string para fazer separações
+  const splittedDate = date.split("-")
+
+  return `${splittedDate[2]}/${splittedDate[1]}/${splittedDate[0]}`
+},
+
   formatCurrent(value) {
      const signal = Number(value) < 0 ? "-" : ""
     value = String(value).replace(/\D/g, "") // REGEX
@@ -198,7 +209,13 @@ return {
 
 formatValues() {
 
+  let {description, amount, date} = Form.getValues()
 
+  amount = Utils.formatAmount(amount)
+
+  date = Utils.formatDate(date)
+
+ 
   
 },
 
@@ -206,7 +223,7 @@ formatValues() {
    event.preventDefault()
 
 try {
-  Form.validateFields()
+  // Form.validateFields()
   // formatar os dados para salvar
    Form.formatValues()
   // Salvar
